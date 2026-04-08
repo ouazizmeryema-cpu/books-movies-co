@@ -1,0 +1,14 @@
+Express :  framework pour Node.js qui permet de créer un serveur webfacilement
+           Créer les routes facilment . 
+           Lire les données envoyées par react 
+           envoyer des réponses JSON
+           gérer les middlewares 
+
+OMDB API (externe)  → tu récupères les infos des films
+                      titre, acteurs, réalisateur...
+
+
+Ton API (interne)   → tu gères les notes et les users
+                      POST /films/:id/noter
+                      POST /register
+                      POST /login

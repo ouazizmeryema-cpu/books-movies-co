@@ -4,7 +4,7 @@ var con = mysql.createConnection({
     user:process.env.DB_USER,
     password:process.env.DB_PASSWORD,
     database:process.env.DB_NAME,
-    port: process.Env.DB_PORT
+    port: process.env.DB_PORT
 
 });
 
@@ -12,12 +12,12 @@ con.connect(err => {
     if(err) {
          console.log('Erreur connexion Mysql', err);
     }else{
-        console.log('Connecté à MySQL');
+        console.log('ConnectÃ© Ã  MySQL');
     };
    
     
 
 });
 
-module.exports =db;
+module.exports = con;
 
