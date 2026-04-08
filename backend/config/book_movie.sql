@@ -36,9 +36,10 @@ CREATE TABLE `films` (
   `note_moyenne` decimal(3,2) DEFAULT '0.00',
   `commentaire` text,
   `nb_votes` int(11) DEFAULT '0',
-  `date_sortie` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
-  `date_creation` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+  `annee_sortie` year(4) NOT NULL
+)
+
+ ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
 
