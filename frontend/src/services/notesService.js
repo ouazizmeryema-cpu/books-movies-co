@@ -1,49 +1,32 @@
 // const à supp quand connexion à la bdd faite 
-const fakeUsers = [
+const fakeNotes = [
     {
         id: 1,
-        nom: "Ascott",
-        prenom: "Randall",
-        ville: "Dorémont",
-        adress: "",
-        email: "ranran@gmail.com",
-        mdp: "mdp"
+        utilisateurs_id: 1,
+        films_id: 2,
+        scenario: 4,
+        jeu_acteur: 3,
+        qualite_audiovisuelle: 3,
+        note_finale: 3.3
     },
     {
         id: 2,
-        nom: "Dumont",
-        prenom: "Henri",
-        ville: "Monte d'or",
-        adress: "idk",
-        email: "riri@gmail.com",
-        mdp: "mdp"
+        utilisateurs_id: 2,
+        films_id: 1,
+        scenario: 5,
+        jeu_acteur: 2,
+        qualite_audiovisuelle: 4,
+        note_finale: 3.7
     }
 ];
 
 
-export const getUsers = async () => {
-    return new Promise((resolve) => { // quand back, remplacer par return axios.get("http://localhost:5000/users");
+export const createNote = async (newNote) => {
+    return new Promise((resolve) => { // quand back, remplacer par return axios.post("http://localhost:5000//films/:id/noter", newNote);
         setTimeout(() => {
-        resolve({ data: fakeUsers }); 
-        }, 500); 
-    });
-};
-
-export const getUserById = async (id) => {
-    return new Promise((resolve) => { // quand back, remplacer par return axios.get("http://localhost:5000/users", id);
-        setTimeout(() => {
-        const user = fakeUsers.find(f => f.id === parseInt(id));
-        resolve({ data: user });
-        }, 300);
-    });
-};
-
-export const createUser = async (newUser) => {
-    return new Promise((resolve) => { // quand back, remplacer par return axios.post("http://localhost:5000/users", newUser);
-        setTimeout(() => {
-            const id = fakeUsers.length + 1;
-            const userToAdd = { ...newUser, id };
-            fakeUsers.push(userToAdd); 
+            const id = fakeNotes.length + 1;
+            const userToAdd = { ...newNote, id };
+            fakeNotes.push(userToAdd); 
             resolve({ data: userToAdd });
         }, 300);
     });
