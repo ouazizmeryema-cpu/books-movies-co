@@ -38,12 +38,12 @@ function LoginPage() {
     return (
         <div>
         <h1>Connexion</h1>
-            <form>
+            <form onClick={handleLogin}>
                 <input type="text" value={email} placeholder="Email" onChange={(e) => setEmail(e.target.value)} required />
                 <input type="password" value={mdp} placeholder="Mot de passe" onChange={(e) => setMdp(e.target.value)} required />
-                <button onClick={handleLogin}>Valider</button>
-                <button onClick={inscr}>Pas de compte ? Inscrivez-vous ici</button>
+                <button type="submit">Valider</button>
             </form>
+            <button onClick={inscr}>Pas de compte ? Inscrivez-vous ici</button>
             {error && <p>{error}</p>}
         </div>
     )

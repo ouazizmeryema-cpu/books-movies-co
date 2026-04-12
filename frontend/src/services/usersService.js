@@ -30,10 +30,21 @@ export const getUsers = async () => {
 };
 
 export const getUserById = async (id) => {
-    return new Promise((resolve) => { // quand back, remplacer par return axios.get("http://localhost:5000/users");
+    return new Promise((resolve) => { // quand back, remplacer par return axios.get("http://localhost:5000/users", id);
         setTimeout(() => {
         const user = fakeUsers.find(f => f.id === parseInt(id));
         resolve({ data: user });
+        }, 300);
+    });
+};
+
+export const createUser = async (newUser) => {
+    return new Promise((resolve) => { // quand back, remplacer par return axios.post("http://localhost:5000/users", newUser);
+        setTimeout(() => {
+            const id = fakeUsers.length + 1;
+            const userToAdd = { ...newUser, id };
+            fakeUsers.push(userToAdd); 
+            resolve({ data: userToAdd });
         }, 300);
     });
 };

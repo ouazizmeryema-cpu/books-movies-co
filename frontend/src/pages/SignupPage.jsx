@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { getUsers } from "../services/usersService";
+import { getUsers, createUser } from "../services/usersService";
 import { useNavigate } from "react-router-dom";
 
 function SignupPage() {
@@ -23,16 +23,19 @@ function SignupPage() {
         });
     }, []);
 
-    const handleLogin = (e) => {
+    const handleSignup = async (e) => {
         e.preventDefault();
 
-        const user = users.find(u => u.email === email && u.mdp === mdp);
+        const user = users.find(u => u.email === email);
 
         if (user) {
-            localStorage.setItem("user", JSON.stringify(user));
-            navigate("/films");
+            setError("Cet utilisateur existe déjà");
+            return;
         } else {
-            setError("Email ou mot de passe incorrect");
+            const newUser = {nom, prenom, ville, adress, email, mdp};
+            await createUser(newUser); 
+            
+            navigate("/connexion");
         }
     }
 
@@ -43,16 +46,16 @@ function SignupPage() {
     return (
         <div>
         <h1>Inscription</h1>
-            <form>
-                <input type="text" value={nom} placeholder="Nom" onChange={(e) => setEmail(e.target.value)} required />
-                <input type="text" value={prenom} placeholder="Prénom" onChange={(e) => setEmail(e.target.value)} required />
-                <input type="text" value={ville} placeholder="Ville (facultatif)" onChange={(e) => setEmail(e.target.value)} />
-                <input type="text" value={adress} placeholder="Adresse (facultatif)" onChange={(e) => setEmail(e.target.value)} />
+            <form onSubmit={handleSignup}>
+                <input type="text" value={nom} placeholder="Nom" onChange={(e) => setNom(e.target.value)} required />
+                <input type="text" value={prenom} placeholder="Prénom" onChange={(e) => setPrenom(e.target.value)} required />
+                <input type="text" value={ville} placeholder="Ville (facultatif)" onChange={(e) => setVille(e.target.value)} />
+                <input type="text" value={adress} placeholder="Adresse (facultatif)" onChange={(e) => setAdress(e.target.value)} />
                 <input type="text" value={email} placeholder="Email" onChange={(e) => setEmail(e.target.value)} required />
                 <input type="password" value={mdp} placeholder="Mot de passe" onChange={(e) => setMdp(e.target.value)} required />
-                <button onClick={handleLogin}>Valider l'inscription</button>
-                <button onClick={conn}>Déjà un compte ? Connectez-vous ici</button>
+                <button type="submit">Valider l'inscription</button>
             </form>
+            <button onClick={conn}>Déjà un compte ? Connectez-vous ici</button>
             {error && <p>{error}</p>}
         </div>
     )
