@@ -29,7 +29,7 @@ const fakeFilms = [
 export const getFilms = async () => {
     return new Promise((resolve) => { // quand back, remplacer par return axios.get("http://localhost:5000/films");
         setTimeout(() => {
-        resolve({ data: fakeFilms });
+        resolve({ data: fakeFilms }); 
         }, 500); 
     });
 };

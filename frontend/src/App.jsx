@@ -1,13 +1,17 @@
-import { BrowserRouter, Routes, Route } from "react-router-dom";
+import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
 import FilmsPage from "./pages/FilmsPage";
 import FilmDetailPage from "./pages/FilmDetailPage";
+import LoginPage from "./pages/LoginPage";
 
 function App() {
     return (
         <BrowserRouter>
         <Routes>
-            <Route path="/" element={<FilmsPage />} />
-            <Route path="/film/:id" element={<FilmDetailPage />} />
+            <Route path="/" element={<Navigate to="/films" />} />
+
+            <Route path="/connexion" element={<LoginPage />} />
+            <Route path="/films" element={<FilmsPage />} />
+            <Route path="/films/film/:id" element={<FilmDetailPage />} />
         </Routes>
         </BrowserRouter>
     );
