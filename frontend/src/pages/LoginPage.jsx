@@ -24,6 +24,7 @@ function LoginPage() {
         const user = users.find(u => u.email === email && u.mdp === mdp);
 
         if (user) {
+            localStorage.setItem("user", JSON.stringify(user));
             navigate("/films");
         } else {
             setError("Email ou mot de passe incorrect");
