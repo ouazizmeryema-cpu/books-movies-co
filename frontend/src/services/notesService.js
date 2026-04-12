@@ -30,7 +30,7 @@ export const getUsers = async () => {
 };
 
 export const getUserById = async (id) => {
-    return new Promise((resolve) => { // quand back, remplacer par return axios.get("http://localhost:5000/users/:id", id);
+    return new Promise((resolve) => { // quand back, remplacer par return axios.get("http://localhost:5000/users", id);
         setTimeout(() => {
         const user = fakeUsers.find(f => f.id === parseInt(id));
         resolve({ data: user });

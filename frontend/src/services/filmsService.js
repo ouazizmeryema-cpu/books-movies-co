@@ -36,7 +36,7 @@ export const getFilms = async () => {
 
 
 export const getFilmById = async (id) => {
-    return new Promise((resolve) => { // quand back, remplacer par return axios.get("http://localhost:5000/films");
+    return new Promise((resolve) => { // quand back, remplacer par return axios.get("http://localhost:5000/films/:id", id);
         setTimeout(() => {
         const film = fakeFilms.find(f => f.id === parseInt(id));
         resolve({ data: film });
