@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { getUsers, getUserById } from "../services/usersService";
+import { getUsers } from "../services/usersService";
 import { useNavigate } from "react-router-dom";
 
 function LoginPage() {
@@ -31,13 +31,18 @@ function LoginPage() {
         }
     }
 
+    const inscr = () => {
+        navigate("/inscription");
+    }
+
     return (
         <div>
         <h1>Connexion</h1>
             <form>
-                <input type="text" value={email} placeholder="Email" onChange={(e) => setEmail(e.target.value)} />
-                <input type="password" value={mdp} placeholder="Mot de passe" onChange={(e) => setMdp(e.target.value)} />
-                <button onClick={handleLogin}>Connexion</button>
+                <input type="text" value={email} placeholder="Email" onChange={(e) => setEmail(e.target.value)} required />
+                <input type="password" value={mdp} placeholder="Mot de passe" onChange={(e) => setMdp(e.target.value)} required />
+                <button onClick={handleLogin}>Valider</button>
+                <button onClick={inscr}>Pas de compte ? Inscrivez-vous ici</button>
             </form>
             {error && <p>{error}</p>}
         </div>
