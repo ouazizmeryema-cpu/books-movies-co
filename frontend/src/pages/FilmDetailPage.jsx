@@ -1,18 +1,28 @@
 import { useParams } from "react-router-dom";
 import { useEffect, useState } from "react";
 import { getFilmById } from "../services/filmsService";
-//import StarRating from "../components/StarRating";
+import { getNoteById } from "../services/notesService";
+import StarRating from "../components/StarRating";
 
 function FilmDetailPage() {
   const { id } = useParams();
 
+  const user = JSON.parse(localStorage.getItem("user") || "null");
+
   const [film, setFilm] = useState(null);
+  const [note_film, setNoteFilm] = useState(null);
 
   useEffect(() => {
     getFilmById(id).then((res) => {
       setFilm(res.data);
     });
   }, [id]);
+
+  useEffect(() => {
+    getNoteById(user.id, id).then((res) => {
+      setNoteFilm(res.data);
+    });
+  }, [id, user]);
 
   if (!film) {
     return <p>Chargement...</p>;
@@ -28,6 +38,8 @@ function FilmDetailPage() {
       <p>Commentaire : {film.commentaire}</p>
       <p>Nombre de votes : {film.nb_votes}</p>
       <p>Année de sortie : {film.annee_sortie}</p>
+      {!note_film && <StarRating film={film} />}
+      {note_film && <p>Vous avez déjà noté ce film</p>}
     </div>
   );
 }

@@ -21,6 +21,15 @@ const fakeNotes = [
 ];
 
 
+export const getNoteById = async (user_id, film_id) => {
+    return new Promise((resolve) => { // quand back, remplacer par return axios.get("http://localhost:5000/films/:id/note");
+        setTimeout(() => {
+        const note = fakeNotes.find(n => n.utilisateurs_id === parseInt(user_id) && n.films_id === parseInt(film_id));
+        resolve({ data: note }); 
+        }, 500); 
+    });
+};
+
 export const createNote = async (newNote) => {
     return new Promise((resolve) => { // quand back, remplacer par return axios.post("http://localhost:5000//films/:id/noter", newNote);
         setTimeout(() => {
