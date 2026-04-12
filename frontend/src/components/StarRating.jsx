@@ -23,7 +23,7 @@ function StarRating({ film }) {
             jeu_acteur,
             qualite_audiovisuelle: quali_audio
         };
-        await createNote(newNote); 
+        const res = await createNote(newNote); 
         setNoteFilm(res.data);
     }
 
