@@ -1,6 +1,8 @@
 import { useEffect, useState } from "react";
 import { getUsers, createUser } from "../services/usersService";
 import { useNavigate } from "react-router-dom";
+import '../styles/LoginPage.css'
+import '../styles/all.css'
 
 function SignupPage() {
 
@@ -44,7 +46,7 @@ function SignupPage() {
     }
 
     return (
-        <div>
+        <div class="formulaire">
         <h1>Inscription</h1>
             <form onSubmit={handleSignup}>
                 <input type="text" value={nom} placeholder="Nom" onChange={(e) => setNom(e.target.value)} required />

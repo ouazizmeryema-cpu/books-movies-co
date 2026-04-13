@@ -1,6 +1,8 @@
 import { useEffect, useState } from "react";
 import { getUsers } from "../services/usersService";
 import { useNavigate } from "react-router-dom";
+import '../styles/LoginPage.css'
+import '../styles/all.css'
 
 function LoginPage() {
 
@@ -36,7 +38,7 @@ function LoginPage() {
     }
 
     return (
-        <div>
+        <div class="formulaire">
         <h1>Connexion</h1>
             <form onClick={handleLogin}>
                 <input type="text" value={email} placeholder="Email" onChange={(e) => setEmail(e.target.value)} required />
