@@ -2,13 +2,14 @@ const express = require('express');
 const cors = require('cors');
 require('dotenv').config();
 
-// Connexion à la base de données
+// Connexion Ã  la base de donnÃ©es
 const db = require('./config/db');
 
 // Importer les routes
 const utilisateursRoutes = require('./routes/utilisateurs');
+const filmsRoutes = require('./routes/films');
 
-// Création de l'application Express
+// CrÃ©ation de l'application Express
 const app = express();
 
 // Activer le CORS
@@ -24,13 +25,17 @@ app.get('/', (req, res) => {
 
 // Test connexion API
 app.get('/test-api', async (req, res) => {
-  const response = await fetch(`http://www.omdbapi.com/?t=Inception&apikey=${process.env.API_KEY}`);
+  const response = await fetch(`http://www.omdbapi.com/?t=Inception&apikey=${process.env.OMDB_API_KEY}`);
   const data = await response.json();
   res.json(data);
 });
 
 // Utiliser les routes utilisateurs
 app.use('/api/utilisateurs', utilisateursRoutes);
+
+//utiliser les routes films
+app.use('/api/films', filmsRoutes);
+
 
 // Démarrer le serveur
 app.listen(process.env.PORT, () => {
