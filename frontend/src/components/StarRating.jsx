@@ -43,30 +43,27 @@ function StarRating({ filmId, onNoteAdded }) {
         const res = await createNote(film_id, newNote);
         setNoteFilm(res.data);
 
-        // Met à jour la note moyenne dans FilmDetailPage
         const filmRes = await api.get(`/films/db/${film_id}`);
         onNoteAdded(filmRes.data.note_moyenne);
     };
 
-    const formulaire = (
-        <form onSubmit={notation}>
-            <label>Scénario :
-                <input type="number" value={scenario} min="1" max="5" step="1" onChange={(e) => setScenario(Number(e.target.value))} required />/5
-            </label>
-            <label>Jeu d'acteur :
-                <input type="number" value={jeu_acteur} min="1" max="5" step="1" onChange={(e) => setJeuActeur(Number(e.target.value))} required />/5
-            </label>
-            <label>Qualité audiovisuel :
-                <input type="number" value={quali_audio} min="1" max="5" step="1" onChange={(e) => setQualiAudio(Number(e.target.value))} required />/5
-            </label>
-            <button type="submit">Enregistrer ma note</button>
-        </form>
-    );
-
     return (
-        <div>
-            {!note_film && formulaire}
-            {note_film && <p>Vous avez déjà noté ce film</p>}
+        <div className="star-rating">
+            {!note_film && (
+                <form onSubmit={notation}>
+                    <label>Scénario :
+                        <input type="number" value={scenario} min="1" max="5" step="1" onChange={(e) => setScenario(Number(e.target.value))} required />/5
+                    </label>
+                    <label>Jeu d'acteur :
+                        <input type="number" value={jeu_acteur} min="1" max="5" step="1" onChange={(e) => setJeuActeur(Number(e.target.value))} required />/5
+                    </label>
+                    <label>Qualité audiovisuel :
+                        <input type="number" value={quali_audio} min="1" max="5" step="1" onChange={(e) => setQualiAudio(Number(e.target.value))} required />/5
+                    </label>
+                    <button type="submit">Enregistrer ma note</button>
+                </form>
+            )}
+            {note_film && <p className="success">Vous avez déjà noté ce film</p>}
         </div>
     );
 }

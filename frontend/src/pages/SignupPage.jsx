@@ -1,5 +1,6 @@
+// SignupPage.jsx
 import { useState } from "react";
-import { createUser } from "../services/usersService";  // supprimer getUsers
+import { createUser } from "../services/usersService";
 import { useNavigate } from "react-router-dom";
 
 function SignupPage() {
@@ -27,7 +28,7 @@ function SignupPage() {
     };
 
     return (
-        <div>
+        <div className="auth-page">
             <h1>Inscription</h1>
             <form onSubmit={handleSignup}>
                 <input type="text" value={nom} placeholder="Nom" onChange={(e) => setNom(e.target.value)} required />
@@ -37,9 +38,9 @@ function SignupPage() {
                 <input type="email" value={email} placeholder="Email" onChange={(e) => setEmail(e.target.value)} required />
                 <input type="password" value={mdp} placeholder="Mot de passe" onChange={(e) => setMdp(e.target.value)} required />
                 <button type="submit">Valider l'inscription</button>
+                <button type="button" onClick={() => navigate("/connexion")}>Déjà un compte ? Connectez-vous ici</button>
             </form>
-            <button onClick={() => navigate("/connexion")}>Déjà un compte ? Connectez-vous ici</button>
-            {error && <p>{error}</p>}
+            {error && <p className="error">{error}</p>}
         </div>
     );
 }

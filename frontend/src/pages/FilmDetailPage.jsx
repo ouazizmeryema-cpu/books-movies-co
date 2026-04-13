@@ -31,7 +31,7 @@ function FilmDetailPage() {
   if (!film) return <p>Chargement...</p>;
 
   return (
-    <div>
+    <div className="film-detail">
       <img
         src={film.Poster !== 'N/A' ? film.Poster : 'https://placehold.co/100x150?text=No+Image'}
         alt={film.Title}
@@ -41,7 +41,7 @@ function FilmDetailPage() {
       <p>Acteurs : {film.Actors}</p>
       <p>Réalisateur : {film.Director}</p>
       <p>Catégorie : {film.Genre}</p>
-      <p>Note moyenne utilisateurs : {noteMoyenne > 0 ? noteMoyenne : 'Aucune note pour le moment'}</p>
+      <p>Note moyenne utilisateurs : <span className="note-moyenne">{noteMoyenne > 0 ? noteMoyenne : 'Aucune note pour le moment'}</span></p>
       <p>Commentaire : {film.Plot}</p>
       <p>Année de sortie : {film.Year}</p>
       {filmDbId && <StarRating filmId={filmDbId} onNoteAdded={(moyenne) => setNoteMoyenne(moyenne)} />}

@@ -14,7 +14,7 @@ function FilmsPage() {
     }, [token]);
 
     useEffect(() => {
-        getFilms('marvel').then((res) => {
+        getFilms().then((res) => {
             setFilms(res.data);
         });
     }, []);
@@ -25,9 +25,11 @@ function FilmsPage() {
                 Déconnexion
             </button>
             <h1>Films</h1>
-            {films.map((film) => (
-                <FilmCard key={film.imdbID} film={film} />  
-            ))}
+            <div className="films-grid">
+                {films.map((film) => (
+                    <FilmCard key={film.imdbID} film={film} />
+                ))}
+            </div>
         </div>
     );
 }

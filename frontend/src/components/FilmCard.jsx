@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 
 function FilmCard({ film }) {
     return (
-        <Link to={`/films/film/${film.imdbID}`}>
+        <Link to={`/films/film/${film.imdbID}`} className="film-card">
             <div>
                 <img
                     src={film.Poster !== 'N/A' ? film.Poster : 'https://placehold.co/100x150?text=No+Image'}
