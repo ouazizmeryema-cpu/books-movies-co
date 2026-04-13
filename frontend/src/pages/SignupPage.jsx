@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import { getUsers, createUser } from "../services/usersService";
 import { useNavigate } from "react-router-dom";
-import '../styles/LoginPage.css'
+import '../styles/LoginSignup.css'
 import '../styles/all.css'
 
 function SignupPage() {
