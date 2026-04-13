@@ -28,10 +28,10 @@ function StarRating({ film }) {
     }
 
     const formulaire = (
-        <form onSubmit={notation}>
-            <label>Scénario :<input type="number" value={scenario} min="1" max="5" step="1" onChange={(e) => setScenario(Number(e.target.value))} required />/5</label>
-            <label>Jeu d'acteur :<input type="number" value={jeu_acteur} min="1" max="5" step="1" onChange={(e) => setJeuActeur(Number(e.target.value))} required />/5</label>
-            <label>Qualité audiovisuel :<input type="number" value={quali_audio} min="1" max="5" step="1" onChange={(e) => setQualiAudio(Number(e.target.value))} required />/5</label>
+        <form onSubmit={notation}  class="form_rating">
+            <label>Scénario :<input class="input_rating" type="number" value={scenario} min="1" max="5" step="1" onChange={(e) => setScenario(Number(e.target.value))} required />/5</label>
+            <label>Jeu d'acteur :<input class="input_rating" type="number" value={jeu_acteur} min="1" max="5" step="1" onChange={(e) => setJeuActeur(Number(e.target.value))} required />/5</label>
+            <label>Qualité audiovisuel :<input class="input_rating" type="number" value={quali_audio} min="1" max="5" step="1" onChange={(e) => setQualiAudio(Number(e.target.value))} required />/5</label>
             <button type="submit">Enregistrer ma note</button>
         </form>
     )

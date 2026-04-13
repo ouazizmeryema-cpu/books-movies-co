@@ -1,0 +1,35 @@
+.input_rating {
+    font-size: 15px;
+
+    color: rgb(2, 82, 16);
+    background-color: rgb(152, 244, 170);
+
+    border-color: rgb(3, 91, 21);
+    border-radius: 5px;
+
+    padding: 5px;
+    margin: 5px;
+}
+
+.form_rating {
+    background-color: rgb(198, 243, 206);
+
+    border-radius: 20px;
+
+    padding-top: 10px;
+    margin: 20px;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+label {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+
+input, button {
+    display: flex;
+}
