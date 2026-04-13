@@ -8,7 +8,6 @@ function StarRating({ film }) {
     const film_id = film.id;
 
     const [note_film, setNoteFilm] = useState(null);
-    const [loading, setLoading] = useState(true);
 
     const [scenario, setScenario] = useState(1);
     const [jeu_acteur, setJeuActeur] = useState(1);
@@ -39,26 +38,15 @@ function StarRating({ film }) {
 
 
     useEffect(() => {
-        setLoading(true);
-
-        getNoteById(user.id, film_id)
-            .then((res) => {
-                setNoteFilm(res.data);
-            })
-            .catch(() => {
-                setNoteFilm(null);
-            })
-            .finally(() => {
-                setLoading(false);
-            });
+        getNoteById(user.id, film_id).then((res) => {
+        setNoteFilm(res.data);
+        });
     }, [film_id, user]);
-
 
     return (
         <div>
-            {loading && <p>Chargement...</p>}
-            {!loading && note_film && (<p>Vous avez déjà noté ce film</p>)}
-            {!loading && !note_film && formulaire}
+            {!note_film && formulaire}
+            {note_film && <p>Vous avez déjà noté ce film</p>}
         </div>
     );
 }
