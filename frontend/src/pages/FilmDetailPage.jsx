@@ -2,8 +2,6 @@ import { useParams } from "react-router-dom";
 import { useEffect, useState } from "react";
 import { getFilmById } from "../services/filmsService";
 import StarRating from "../components/StarRating";
-import '../styles/FilmDetailPage.css'
-import '../styles/all.css'
 
 function FilmDetailPage() {
   const { id } = useParams();
